@@ -4,5 +4,6 @@ const state ={
     forksUrl:config.forksUrl,
     search:'',
     page:1,
+    forkError:false
 }
 export default state;

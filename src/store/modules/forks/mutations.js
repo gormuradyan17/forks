@@ -7,7 +7,10 @@ const mutations={
         state.page=payload.page;
 
     },
+    UPDATE_ERROR(state,payload){
+        state.forkError=payload;
 
+    }
 
 };
 

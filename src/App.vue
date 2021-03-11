@@ -17,7 +17,7 @@
                 <v-text-field
                         v-if="searchActive"
                         v-model="search"
-                        v-on:input="checkHandler"
+                        @input="checkHandler"
                         label="Search"
                         outlined
                         :error="pathError"
@@ -88,11 +88,14 @@
 
             },
             async searchHandler() {
-                await this.$store.dispatch('forksModule/getForks', {search: this.search, page: 1});
-                await this.$router.push({
-                    name: 'Search',
-                    query: {page: 1, repository: this.$store.state.forksModule.search}
-                });
+                 await this.$store.dispatch('forksModule/getForks', {search: this.search, page: 1});
+                 if(!this.$store.state.forksModule.forkError){
+                     await this.$router.push({
+                         name: 'Search',
+                         query: {page: 1, repository: this.$store.state.forksModule.search}
+                     });
+                 }
+
             }
         },
         created() {
